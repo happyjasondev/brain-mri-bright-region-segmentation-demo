@@ -1,30 +1,40 @@
-# MRI Brain Tumor Detection System
-A practice program that finds tumors in MRI brain images, coded in Python.
-The results may be false positives, due to its reliance on simple threshold-based segmentation and simply looking at brightness levels. 
-Real-world imaging technology may use deep learning models trained on vast amounts of annotated data based on shape, location, and texture.
+# 📖 MRI Brain Tumor Detection Program
 
-## 📖 How to View the Sample Image
-In a browser, copy and paste this URL on the search bar: `https://happyjasondev.github.io/mri-brain-tumor-detection-system/`
+> An image processing program engineered in Python with vibe coding to evaluate signal intensity anomalies in brain MRI scans, inspired by my interest in understanding early diagnostic imaging.
 
-## 🛠️ Features & Tech Stack
-**Language:**
-- Python
+![Sample Image](real_mri_result.png)
 
-**Libraries:**
-- numpy and matplotlib.pyplot
-- From PIL: Image
-- From skimage: img_as_float, morphology, measure, filters
-- From scipy: ndimage
-- From mri_pipeline: denoise_image, enhance_contrast, estimate_noise_sigma
+## 🔬 Visual Output
 
-**Key Features:** 
-This script directly reuses the four functional steps defined in `mri_pipeline.py`:
-- denoise_image()      -- Denoising
-- enhance_contrast()   -- Contrast enhancement
-- segment_lesion()     -- Segmentation / Annotation of abnormally bright regions
-- visualize_pipeline() -- Visualization of output
+**View the sample processing output:** [https://happyjasondev.github.io/mri-brain-tumor-detection-program/](https://happyjasondev.github.io/mri-brain-tumor-detection-program/)
 
-**Disclaimer:**
-The "automatic annotation" here is purely a demonstration of image processing techniques
-(identifying regions with abnormally high signal intensity) and does not constitute a medical diagnosis.
-Actual clinical interpretation must still be performed by a professional physician.
+## 📝 Known Limitations & Future Roadmap
+
+* **Sensitivity to High-Intensity Non-Tumor Structures:**  
+  * **Current Limitation:** Bright anatomical features (such as skull bones or fat tissue) can sometimes trigger false positives under simple intensity thresholding, as demonstrated in the image.
+  * **Planned Improvement:** Implement skull-stripping algorithms (e.g., Brain Extraction Tool / BET) to isolate brain tissue prior to segmentation.
+
+* **Lack of Spatial & Volumetric Context:**  
+  * **Current Limitation:** Evaluates 2D slice intensity in isolation without analyzing 3D spatial continuity or texture patterns.
+  * **Planned Improvement:** Transition from classical image processing to a Convolutional Neural Network (e.g., U-Net architecture) trained on multi-modal clinical datasets (BRATS).
+
+## 🛠️ Key Features & Technical Architecture
+
+* **Modular Image Processing Pipeline:** Structured reusable functional workflows across `mri_pipeline.py` to isolate signal acquisition, noise mitigation, and feature isolation stages.
+* **Signal Denoising & Contrast Optimization:** Applied `scipy.ndimage` and `skimage.filters` to calculate noise variance ($\sigma$), remove high-frequency artifacts, and enhance tissue contrast gradients.
+* **Threshold-Based Lesion Segmentation:** Utilized morphological operations (`skimage.morphology`) and connected-component labeling (`skimage.measure`) to isolate hyperintense region clusters representing potential pathological structures.
+* **Multi-Stage Computer Vision Visualization:** Built a modular rendering grid using `matplotlib.pyplot` and `PIL` to map raw input DICOM/image arrays through denoising, contrast scaling, and automated lesion boundary annotation.
+
+## 💻 Tech Stack & Dependencies
+
+| Category | Technology / Library |
+| :--- | :--- |
+| **Language** | Python 3.x |
+| **Scientific Computing** | `NumPy`, `SciPy` (`ndimage`) |
+| **Computer Vision / Processing** | `skiimage` (`img_as_float`, `morphology`, `filters`, `measure`), `PIL` |
+| **Data Visualization** | `Matplotlib` |
+| **Image Enhancement** | `mri_pipeline` (`denoise_image`, `enhance_contrast`, `estimate_noise_sigma`) |
+
+## ⚠️ Disclaimer
+
+This software demonstrates algorithmic image processing techniques (isolating high-signal intensity regions) for educational and portfolio demonstration purposes only. It does not constitute a medical diagnosis. Clinical interpretation must be performed by a qualified physician.
