@@ -2,7 +2,9 @@
 
 > An image processing program engineered in Python with vibe coding to evaluate signal intensity anomalies in brain MRI scans, inspired by my interest in understanding early diagnostic imaging.
 
-![Sample Image](real_mri_result.png)
+<a href="https://happyjasondev.github.io/mri-brain-tumor-detection-program/">
+<img src="real_mri_result.png" width="50%" alt="Sample Image Demo" />
+</a>
 
 ## 🔬 Visual Output
 
