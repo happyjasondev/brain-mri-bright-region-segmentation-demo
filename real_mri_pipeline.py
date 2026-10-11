@@ -125,7 +125,7 @@ def visualize_real_mri(raw, denoised, enhanced, mask, regions, save_path):
         0.5, 0.08,
         "Image-processing demo only. Highlighted areas are automatic brightness-based detections;\n"
         "they may include normal structures or miss real abnormalities.\n"
-        "Clinical interpretation must be performed by a qualified radiologist.",
+        "For educational and portfolio demonstration purposes only. It does not constitute a medical diagnosis. Clinical interpretation must be performed by a qualified physician.",
         ha="center", va="center", fontsize=15, color="#222222", linespacing=1.5,
     )
     plt.savefig(save_path, dpi=150, bbox_inches="tight", facecolor="white")
