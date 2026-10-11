@@ -117,16 +117,16 @@ def visualize_real_mri(raw, denoised, enhanced, mask, regions, save_path):
     # Disclaimer: plain text, enlarged
     plt.tight_layout(rect=[0, 0.3, 1, 1])
     fig.text(
-        0.5, 0.21,
+        0.5, 0.25,
         "NOT A MEDICAL DIAGNOSIS",
         ha="center", va="center", fontsize=24, fontweight="bold", color="black",
     )
     fig.text(
-        0.5, 0.08,
+        0.5, 0.09,
         "Image-processing demo only. Highlighted areas are automatic brightness-based detections;\n"
         "they may include normal structures or miss real abnormalities.\n"
         "For educational and portfolio demonstration purposes only. It does not constitute a medical diagnosis. Clinical interpretation must be performed by a qualified physician.",
-        ha="center", va="center", fontsize=15, color="#222222", linespacing=1.5,
+        ha="center", va="center", fontsize=17, color="#C62828", linespacing=1.5,
     )
     plt.savefig(save_path, dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)
