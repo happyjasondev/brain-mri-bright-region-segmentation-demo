@@ -86,16 +86,16 @@ def segment_bright_region(img, skull_erosion=6, min_size=120):
 
 
 def visualize_real_mri(raw, denoised, enhanced, mask, regions, save_path):
-    fig, axes = plt.subplots(1, 4, figsize=(18, 5.5), facecolor="white")
+    fig, axes = plt.subplots(1, 4, figsize=(18, 7.5), facecolor="white")
 
     axes[0].imshow(raw, cmap="gray")
-    axes[0].set_title("1. Original MRI", fontsize=12)
+    axes[0].set_title("1. Original MRI", fontsize=20)
 
     axes[1].imshow(denoised, cmap="gray")
-    axes[1].set_title("2. Denoised", fontsize=12)
+    axes[1].set_title("2. Denoised", fontsize=20)
 
     axes[2].imshow(enhanced, cmap="gray")
-    axes[2].set_title("3. Contrast enhanced", fontsize=12)
+    axes[2].set_title("3. Contrast enhanced", fontsize=20)
 
     axes[3].imshow(enhanced, cmap="gray")
     overlay = np.ma.masked_where(~mask, mask)
@@ -109,24 +109,26 @@ def visualize_real_mri(raw, denoised, enhanced, mask, regions, save_path):
             fill=False, edgecolor="cyan", linewidth=1.6,
         )
         axes[3].add_patch(rect)
-    axes[3].set_title(f"4. Highlighted bright region(s): {len(regions)}", fontsize=12)
+    axes[3].set_title(f"4. Highlighted bright region(s): {len(regions)}", fontsize=20)
 
     for ax in axes:
         ax.axis("off")
 
     # Disclaimer: plain text, enlarged
-    plt.tight_layout(rect=[0, 0.3, 1, 1])
+    plt.tight_layout(rect=[0, 0.42, 1, 1])
     fig.text(
-        0.5, 0.25,
-        "NOT A MEDICAL DIAGNOSIS",
-        ha="center", va="center", fontsize=24, fontweight="bold", color="black",
+        0.5, 0.34,
+        "NOT A MEDICAL DIAGNOSIS.",
+        ha="center", va="center", fontsize=24, fontweight="bold", color="red",
     )
     fig.text(
-        0.5, 0.09,
-        "Image-processing demo only. Highlighted areas are automatic brightness-based detections;\n"
+        0.5, 0.14,
+        "Image-processing demonstration for educational and portfolio purposes only.\n"
+        "Highlighted areas are automatic brightness-based detections;\n"
         "they may include normal structures or miss real abnormalities.\n"
-        "For educational and portfolio demonstration purposes only. It does not constitute a medical diagnosis. Clinical interpretation must be performed by a qualified physician.",
-        ha="center", va="center", fontsize=17, color="#C62828", linespacing=1.5,
+        "It does not constitute a medical diagnosis.\n"
+        "Clinical interpretation must be performed by a qualified physician.",
+        ha="center", va="center", fontsize=20, color="#C62828", linespacing=1.5,
     )
     plt.savefig(save_path, dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)
