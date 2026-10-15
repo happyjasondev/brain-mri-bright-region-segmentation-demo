@@ -4,7 +4,7 @@
 
 > The program loads a real brain MRI image from Kaggle, reduces noise with Non-Local Means denoising, and applies CLAHE (Contrast Limited Adaptive Histogram Equalization) for display. Then, it uses Otsu-based thresholding on the denoised image to segment the bright regions, and visualizes every stage side by side.
 
-> This is not a tumor detector. Brightness alone cannot tell abnormal tissue from normal bright tissue, so the output can include normal structures or miss real abnormalities. It was tested on a single slice, so results may vary greatly. Deep-learning segmentation models (CNNs such as U-Net or nnU-Net) are the next step.
+> This is not a tumor detector. Brightness alone cannot tell abnormal tissue from normal bright tissue, so the output can include normal structures or miss real abnormalities. It was tested on a single slice, so results for other images may vary greatly. Deep-learning segmentation models (CNNs such as U-Net or nnU-Net) are the next step.
 
 <a href="https://happyjasondev.github.io/brain-mri-bright-region-segmentation-demo/">
 <img src="real_mri_result.png" width="75%" alt="Sample Image Demo" />
