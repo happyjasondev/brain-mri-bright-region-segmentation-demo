@@ -6,13 +6,13 @@
 
 > This is not a tumor detector. Brightness alone cannot tell abnormal tissue from normal bright tissue, so the output can include normal structures or miss real abnormalities. It was tested on a single slice, so results may vary greatly. Deep-learning segmentation models (CNNs such as U-Net or nnU-Net) are the next step.
 
-<a href="https://happyjasondev.github.io/mri-brain-tumor-detection-program/">
+<a href="https://happyjasondev.github.io/brain-mri-bright-region-segmentation-demo/">
 <img src="real_mri_result.png" width="75%" alt="Sample Image Demo" />
 </a>
 
 ## 🔬 Visual Output
 
-**View the sample processing output:** [https://happyjasondev.github.io/mri-brain-tumor-detection-program/](https://happyjasondev.github.io/mri-brain-tumor-detection-program/)
+**View the sample processing output:** [https://happyjasondev.github.io/brain-mri-bright-region-segmentation-demo/](https://happyjasondev.github.io/brain-mri-bright-region-segmentation-demo/)
   * On the sample slice, the program highlights two bright regions: a large one (4,868 px) and a small one (127 px). The program cannot tell what either region is. Both are only brightness-based candidates.
 
 ## ⚙️ How it Works
