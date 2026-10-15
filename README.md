@@ -28,6 +28,13 @@
 
 If there's no segmentation on the denoised image, CLAHE would stretch the contrast locally, which makes normal brain folds look bright. Thresholding on the CLAHE image produced 20 false regions in an early version. Segmenting on the denoised image gives only 2 regions.
 
+## 🛠️ Key Features & Technical Architecture
+
+* **Modular Image Processing Pipeline:** Reusable functions for denoising, contrast enhancement, and segmentation in `mri_pipeline.py`, with `real_mri_pipeline.py` handling image loading and segmentation for a real MRI slice.
+* **Denoising & Contrast Enhancement:** Estimates the noise level with a Laplacian-based method (`scipy.ndimage`), reduces noise with Non-Local Means (`skimage.restoration`), and enhances local contrast with CLAHE (`skimage.exposure`).
+* **Threshold-Based Bright-Region Segmentation:** Combines Otsu thresholding (`skimage.filters`), morphological cleanup (`skimage.morphology`), and connected-component labeling (`skimage.measure`) to isolate hyperintense regions. These are brightness-based regions, not confirmed abnormalities.
+* **Multi-Stage Visualization:** Loads JPG/PNG images with `PIL` and uses `matplotlib.pyplot` to show the original, denoised, contrast-enhanced, and highlighted-region images side by side.
+
 ## 📝 Known Limitations & Future Roadmap
 
 * **Brightness is Not Enough for a Diagnosis:**  
@@ -37,13 +44,6 @@ If there's no segmentation on the denoised image, CLAHE would stretch the contra
 * **Lack of Spatial & Volumetric Context:**  
   * **Current Limitation:** Each slice is analyzed separately, without 3D continuity or texture information. The thresholds 0.55, skull_erosion=6, and min_size=120 were tuned for this specific slice and will likely need re-tuning for other images.
   * **Planned Improvement:** Transition from classical image processing to a CNN-based network such as U-Net or nnU-Net trained on multi-modal clinical datasets (BRATS).
-
-## 🛠️ Key Features & Technical Architecture
-
-* **Modular Image Processing Pipeline:** Reusable functions for denoising, contrast enhancement, and segmentation in `mri_pipeline.py`, with `real_mri_pipeline.py` handling image loading and segmentation for a real MRI slice.
-* **Denoising & Contrast Enhancement:** Estimates the noise level with a Laplacian-based method (`scipy.ndimage`), reduces noise with Non-Local Means (`skimage.restoration`), and enhances local contrast with CLAHE (`skimage.exposure`).
-* **Threshold-Based Bright-Region Segmentation:** Combines Otsu thresholding (`skimage.filters`), morphological cleanup (`skimage.morphology`), and connected-component labeling (`skimage.measure`) to isolate hyperintense regions. These are brightness-based regions, not confirmed abnormalities.
-* **Multi-Stage Visualization:** Loads JPG/PNG images with `PIL` and uses `matplotlib.pyplot` to show the original, denoised, contrast-enhanced, and highlighted-region images side by side.
 
 ## 💻 Tech Stack & Dependencies
 
