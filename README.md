@@ -1,6 +1,6 @@
 # 📖 Brain MRI Bright-Region Segmentation Demo
 
-> A Python image-processing project, built with AI collaboration, that highlights abnormally bright regions in a brain MRI slice. I made it to learn how medical images are cleaned and analyzed.
+> A Python image-processing project, built with AI collaboration, that highlights abnormally bright regions in a brain MRI slice. I developed it to learn how medical images are cleaned and analyzed.
 
 > The program loads a real brain MRI image from Kaggle, reduces noise with Non-Local Means denoising, and applies CLAHE (Contrast Limited Adaptive Histogram Equalization) for display. Then, it uses Otsu-based thresholding on the denoised image to segment the bright regions, and visualizes every stage side by side.
 
